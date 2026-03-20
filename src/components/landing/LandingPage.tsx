@@ -4,6 +4,7 @@ import Section from './Section'
 import Layout from './Layout'
 import { sections } from './sections'
 
+
 export default function LandingPage() {
   const [activeSection, setActiveSection] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -47,16 +48,19 @@ export default function LandingPage() {
         {sections.map((section, index) => (
           <button
             key={section.id}
-            className={`w-3 h-3 rounded-full my-2 transition-all ${
-              index === activeSection ? 'bg-white scale-150' : 'bg-gray-600'
+            className={`w-2.5 h-2.5 rounded-full my-2 transition-all border ${
+              index === activeSection
+                ? 'scale-150 border-[#c9a96e]'
+                : 'border-[#c9a96e] bg-transparent'
             }`}
+          style={{ background: index === activeSection ? '#c9a96e' : 'transparent' }}
             onClick={() => handleNavClick(index)}
           />
         ))}
       </nav>
       <motion.div
-        className="fixed top-0 left-0 right-0 h-0.5 bg-white origin-left z-30"
-        style={{ scaleX }}
+        className="fixed top-0 left-0 right-0 h-0.5 origin-left z-30"
+        style={{ background: '#c9a96e', scaleX }}
       />
       <div
         ref={containerRef}
